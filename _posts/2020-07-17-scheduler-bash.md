@@ -1,3 +1,11 @@
+---
+layout:     post
+title:      Homemade bash Scheduler 
+date:       2020-07-10 19:28
+summary:    This is a simmple implementation of bash scheduler + crontab
+categories: software
+---
+
 # Homemade Subscriber using Bash
 > Watch for modified files in specific directories at regular interval
 
