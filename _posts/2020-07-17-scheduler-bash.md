@@ -1,14 +1,19 @@
 ---
 layout:     post
-title:      Homemade bash Scheduler 
-date:       2020-07-10 19:28
-summary:    This is a simmple implementation of bash scheduler + crontab
+title:      Implementing a simple file watcher using Bash/Crontab
+date:       2020-07-10 19:22
+summary:    This is a simple exploration of cron, bash and how to create a file watcher.
 categories: software
 ---
-
-# Homemade Subscriber using Bash
 > Watch for modified files in specific directories at regular interval
 
+Ever wondered how to subscribe to new files? We will explore a very basic functional way to solve this issue in bash in this blog post. The situation is as follows:some processes write files with a consistent prefix (e.g: revenue_tableYYYYMMdd.csv) and we want to catch the new written files and do something with them, for instance copy them to another server.  We assume we only have very basic software infrastructure, a server running bash. We only have to write 2 files, the bash script and the config file. Then we will run the bash script in a cron job to run everyday. The structure will look like the following:
+```
+subscriber
+|    schedule_transfer.sh
+|    subscribed_files_info.csv
+```
+The bash script will parse the csv and verify whether the mentioned files have been modified/created/updated. If so, we will copy them to another server.
 
 #### Config file
 Let's start by writing the config file `subscribed_files_info.csv`. This file is a simple csv with no header -- it's simpler not to write header -- with 2 columns. The first column is the path and the second column is the prefix of the tables inside of the specific directory.
